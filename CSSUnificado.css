@@ -1,0 +1,1062 @@
+:root {
+    --leftcontentvw:  65.4vw; /* Width of video player section, chat will fill the rest */
+    --bannerimg: background: rgba(9, 3, 14); /* Sliding banner image in MOTD */
+    --dialogbgimageurl: url("https://files.catbox.moe/vx4tqi.png"); /* Modal background image */
+    --bgimageurl: url("https://files.catbox.moe/l6dav3.png"); /* Background channel image */
+    --primarycolor: #000000;
+    --secondarycolor: #09030e;
+    --tertiarycolor: #704995;
+}
+ 
+.navbar-brand {
+    text-indent: -9999px; /* empurra o texto pra fora da tela */
+    background-image: url("https://files.catbox.moe/8uy4yq.png"); /* substitua pela URL da sua imagem */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 155px; /* ajuste conforme o tamanho da imagem */
+    height: 45px;  /* ajuste conforme o tamanho da imagem */
+    display: block;
+}
+ 
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Maps&display=swap');
+ 
+/* Insere um novo nome personalizado por cima */
+.navbar-brand::after {
+    content: "RadioEKZ"; /* <- Seu novo título aqui */
+    font-family: 'Helvetica', cursive;
+    color: #aa53eb;
+    font-size: 15px;
+    font-weight: 999;
+    font-style: normal;
+    position: absolute;
+    left: 0;
+    top: 6.5;
+    transform: scaleY(2.5); /* Aumenta 50% na altura */
+    display: inline-block; /* Necessário para transform funcionar corretamente */
+}
+ 
+.pm-panel .panel-heading {
+    background-color: #773aa4 !important; /* Cor de fundo */
+    color: #ffffff !important;            /* Cor do texto */
+}
+
+.pm-unread {
+  background-color: #ff4444 !important;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { background-color: #ff4444; }
+  50% { background-color: #222; }
+  100% { background-color: #ff4444; }
+}
+ 
+#custom-home-button:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+
+/* Global scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 3px;
+    border: 0px solid hsl(0,0%,27%);
+    border-top: 0;
+    border-bottom: 0;
+    display: none;
+}
+ 
+::-webkit-scrollbar-corner {
+    background-color: rgba(26,26,26,1);
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 4px;
+    background: var(--primarycolor);
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #68656b;
+}
+ 
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+ 
+/* Font Settings for all text */
+* {
+    font-size: 102%;
+    font-family: "Quicksand", "Ubuntu", Verdana, Tahoma, sans-serif, Eater;
+}
+ 
+#wrap {
+    padding: 0;
+}
+ 
+#drinkbarwrap, #resizewrap {
+    display: none;
+}
+ 
+#chatwrap > .profile-box {
+    height: 100vh !important;
+    width: 100vw !important;
+    z-index: 1039 !important;
+    max-height: unset;
+    max-width: unset;
+    position: fixed !important;
+    top: 0px !important;
+    left: 0px !important;
+    padding: unset !important;
+    overflow: visible;
+    border: none;
+}
+ 
+.fluid > .profile-box {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%,-50%) !important;
+    z-index: 1020;
+}
+ 
+div#chanjs-allow-prompt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+ 
+#chanjs-allow-prompt > button.close {
+    display: none;
+}
+ 
+#mainpage {
+    padding-top: 50px;
+}
+ 
+/* Top navbar styling */
+.navbar {
+    border: none;
+}
+ 
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form, .navbar-header {
+    background: var(--primarycolor);
+}
+ 
+.navbar-inverse .navbar-brand {
+    letter-spacing: 4px;
+}
+ 
+.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand{
+    color: #9d6bbf;
+}
+ 
+.navbar-brand {
+    float: left;
+    padding: 15px;
+    font-size: 18px;
+    line-height: 20px;
+    height: 50px;
+}
+ 
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+    background-color: var(--tertiarycolor) !important;
+}
+ 
+.navbar-nav>li:hover {
+    background-image: var(--tertiarycolor) !important;
+}
+ 
+.nav > li > a:focus, .nav > li > a:hover {
+    background-color: var(--tertiarycolor) !important;
+}
+ 
+#content-wrap {
+    display: grid;
+}
+ 
+/* Note: I think the scrollbar is included in viewport width setting, so the left content overflows if scrollbar styling is enabled */
+#leftcontent {
+    width: var(--leftcontentvw);
+    background-image: var(--bgimageurl);
+    background-repeat: repeat;
+    background-attachment: fixed;
+}
+ 
+/* Shows poll modal on top of video */
+#pollwrap {
+    position: absolute;
+}
+ 
+.poll-menu {
+    position: absolute;
+    z-index: 1020;
+    max-width: 30%;
+    background: rgba(0, 0, 0, 0.6);
+    border: #b8b2bf;
+    border-style: solid;
+    border-width: thin;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.8px);
+    -webkit-backdrop-filter: blur(3.8px);
+}
+ 
+.well.active {
+    position: absolute;
+    z-index: 1020;
+}
+ 
+#video-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: calc(100vh - 50px);
+    background: url("https://files.catbox.moe/rhmhsu.gif") repeat;
+    Background-color: var(--primarycolor);
+}
+ 
+#videowrap {
+    width: 100%;
+    padding: 0;
+}
+ 
+div.embed-responsive * {
+    max-height: calc(100vh - 50px);
+}
+ 
+/* MOTD glass styling */
+#motdwrap {
+    /* From https://css.glass */
+    background: rgba(31, 27, 33, 0.749);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.8px);
+    -webkit-backdrop-filter: blur(4.8px);
+    border: 1px solid rgba(29, 27, 33, 0.34);
+}
+ 
+#motdrow {
+    padding-top: 15px;
+    justify-content: center;
+}
+ 
+.row {
+    margin-left: 60px;
+    margin-right: 50px;
+}
+ 
+#announcements {
+    height: 0;
+    margin-top: 15px;
+}
+ 
+/* PLaylist and controls positioning */
+#controlsrow {
+    margin-left: 75px;
+}
+ 
+#rightcontrols {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 99% !important;
+}
+ 
+#playlistrow {
+    margin-left: initial;
+}
+ 
+#playlistrow ::before {
+    display: initial;
+}
+ 
+#rightpane {
+    width: var(--leftcontentvw);
+}
+ 
+#rightcontent {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 50px);
+    width: calc(100vw - var(--leftcontentvw));
+    min-width: 273px;
+    position: fixed;
+    right: 0;
+}
+ 
+#chatheader {
+    background: #140e10 url("https://files.catbox.moe/l6dav3.png") repeat;
+    border-radius: unset;
+}
+ 
+#chatheader .label {
+    height: unset;
+}
+ 
+/* Video title styling */
+.currenttitlewrap {
+    overflow: hidden;
+}
+ 
+#videowrap-header {
+    display: flex;
+    overflow-wrap: break-word;
+    overflow-y: auto;
+    background: #140e10 url("https://files.catbox.moe/l6dav3.png") repeat;
+    background-color: #140e10
+    padding: 9px 15px 15px 15px;
+    border-radius: 0;
+}
+ 
+#currenttitle {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 40px;
+}
+ 
+#usercount {
+    padding-left: 20px;
+    pointer-events: none;
+}
+ 
+/* Show users horizontally and show scrollbar only for this element if overflowing */
+#userlist {
+    height: 30px !important;
+    min-height: 30px;
+    width: inherit;
+    min-width: inherit;
+    float: unset;
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    background-color: var(--primarycolor);
+}
+ 
+#userlist::-webkit-scrollbar {
+    display: block;
+}
+ 
+#userlist, #messagebuffer, #chatheader, #videowrap-header{
+    border: initial;
+}
+ 
+.userlist_item {
+    display: flex;
+    padding-left: 15px;
+    padding-top: 3px;
+    font-weight: bold;
+    color: #dd88ff !important;
+}
+ 
+.userlist_owner {
+    font-size: normal;
+    color: #dd88ff !important;
+}
+ 
+.userlist_guest {
+    font-size: small;
+    color: #ffffff !important;
+    font-weight: bold;
+}
+ 
+/* Chat display size and styling */
+#messagebuffer {
+    height: !important;
+    flex-grow: 5;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #140e10 url("https://files.catbox.moe/l6dav3.png") repeat;
+    opacity: 50;
+}
+ 
+#messagebuffer > div {
+    position: relative;
+    border-radius: 0.5rem;
+    line-height: 1.1 !important;
+    margin-top: 1px !important;
+    margin-bottom: 1px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+ 
+#messagebuffer > div:last-child {
+    padding-bottom: 0;
+    margin-bottom: 1.25rem;
+}
+ 
+/* Chat messages styling */
+.server-whisper {
+    padding-left: 2px;
+    padding-bottom: 0px;
+}
+ 
+.server-msg-disconnect, .server-msg-reconnect{
+    padding-bottom: 0px !important;
+    border-radius: 6px;
+}
+ 
+.label {
+    display: flex;
+}
+ 
+.username {
+    color: #ff6600 !important;
+    font-size: 14px !important;
+    font-weight: bold;
+    margin-right: 5px;
+    display: inline;
+}
+ 
+.timestamp {
+    order: -2; /* move o timestamp para antes de tudo */
+    color: #aaa; /* opcional: cor do timestamp */
+    min-width: 60px;
+    flex-shrink: 0;
+}
+ 
+ 
+.channel-emote {
+    max-width: 80px;
+    max-height: 80px;
+}
+ 
+.emote-big {
+    max-width: 120px;
+    max-height: 120px;
+}
+ 
+.emote-big > img {
+    max-width: -webkit-fill-available;
+    max-height: -webkit-fill-available;
+}
+ 
+.nick-highlight {
+   background-color: #70499500;
+   border-color: #70499500;
+   border-style: solid;
+   border-width: 0px;
+}
+ 
+/* Chat enter message box styling */
+#rightcontent > form {
+    background-color: var(--primarycolor);
+}
+ 
+#chatline {
+    height: 1.6rem;
+    max-height: 5rem;
+    margin: 5px 0;
+    border-radius: 5px;
+    resize: none;
+}
+ 
+#chatline::placeholder {
+    font-style: italic;
+    opacity: .5;
+    color: grey;
+}
+ 
+.form-control {
+    border: initial;
+    border-radius: 2px;
+}
+ 
+/* Buttons styling */
+#leftcontrols {
+    background-color: var(--primarycolor);
+    display: flex;
+    padding: 6px;
+    min-height: 42px;
+    width: inherit;
+    min-width: inherit;
+}
+ 
+.btn {
+    background-image: none;
+    background-color: var(--tertiarycolor);
+}
+ 
+.btn:hover {
+    filter: brightness(0.5);
+    /* Theres a better way to apply the opacity filter with this, but it cant work for now
+    -webkit-backdrop-filter: opacity(0.5);
+    backdrop-filter: opacity(0.5);
+    */
+}
+ 
+.btn-danger {
+    color: #fff;
+    background-color: #ee5f5b;
+}
+ 
+.btn-danger:hover {
+    filter: brightness(0.5);
+}
+ 
+#jump-btn {
+    color: white;
+}
+ 
+#newpollbtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ 
+#emotes-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ 
+#afk-btn {
+    margin-left: auto;
+}
+ 
+/* Channel password */
+#needpw {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+}
+ 
+#needpw input {
+    background-color: var(--secondarycolor) !important;
+}
+ 
+/* Footer  styling */
+.container .credit {
+    margin: 10px 0;
+    text-align: center;
+}
+ 
+.text-muted {
+    color: #837a87;
+}
+ 
+#footer {
+    font-size: 0.1px;
+}
+ 
+/* Fix video clipping on rightcontent min-width */
+@media only screen and (max-width: 1264px) {
+    #leftcontent{
+        width: calc(100vw - 273px);
+    }
+}
+ 
+/* Add media query for smaller screens */
+@media only screen and (max-width: 768px) {
+    /* Disappear unnecessary chat elements when screen gets too short */
+    @media only screen and (max-height: 560px) {
+        #userlist, #chatheader {
+            display: none;
+        }
+    }
+ 
+    @media only screen and (max-height: 900px) {
+        #currenttitlewrap {
+            display: none;
+        }
+    }
+ 
+    #leftcontent {
+        width: 100vw;
+    }
+ 
+    #videowrap {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+    }
+ 
+    /* Not sure if theres a better way of calculating screen size to give to video and chat, but this works */
+    #video-container {
+        position: fixed;
+        height: calc(100vw / 16 * 9);
+        width: 100vw;
+        z-index: 1000;
+    }
+ 
+    #emotewrap {
+        position: fixed;
+        top: calc(139vw / 16 * 9) !important;
+        left: -4vw !important;
+    }
+ 
+    #emotespanel {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        z-index: 999;
+    }
+ 
+    #chatwrap {
+        height: 485px !important;
+        width: 100%;
+    }
+ 
+    #messagebuffer {
+        height: 336px !important;
+    }
+ 
+ 
+ 
+    #rightcontent {
+        position: initial;
+        margin-top: calc(100vw / 16 * 9);
+        height: calc((var(--vh, 1vh) * 100 - 100vw / 16 * 9) - 10px);
+        width: 100%;
+    }
+ 
+    #announcements {
+        display: contents;
+    }
+ 
+    .row {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+ 
+    #controlsrow {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+ 
+    #playlistrow {
+        margin-right: 50px;
+    }
+ 
+    #rightpane {
+        width: 108%;
+    }
+}
+ 
+/* The following is imported from older code with minor changes */
+ 
+/* Modal styling */
+.modal-body::before {
+    content: "";
+    background-image: var(--dialogbgimageurl);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.5;
+}
+ 
+.modal-backdrop.in {
+    opacity: .3
+}
+ 
+.tab-content > .tab-pane,
+.form-group,
+.pm-history-content {
+    position: relative;
+}
+ 
+.pm-panel > .panel-body > .pm-buffer {
+  background: url("https://files.catbox.moe/rhmhsu.gif") repeat;
+}
+ 
+@keyframes piscar-pm-notice {
+  0%, 100% { background-color: #ff6600; color: white; }
+  50% { background-color: #cc3300; color: white; }
+}
+ 
+/* BotÃ£o que aparece no rodapÃ© quando alguÃ©m envia PM */
+#pm-notice {
+  animation: piscar-pm-notice 1s infinite !important;
+}
+ 
+textarea.form-control {+++++
+    height: 500px;
+}
+ 
+/* Queue decoration */
+/* .queue_active {
+    background-image: linear-gradient(#30283a, #4b3c5a, #5d527a, #9b6ea2);
+    background-repeat: no-repeat
+}
+.queue_entry {
+    border-color: #2f0552b0;
+    background-color: #51316b8a;
+    font-size: 75%;
+}
+ 
+.videolist {
+    background-image: url();
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+} */
+ 
+.nick-hover {
+    background-color: rgba(142, 101, 171, 0.11)
+}
+ 
+/* Styling for custom emotes panel */
+ 
+.emotewrap {
+    position: absolute;
+    cursor: move;
+    top: 17%;
+    left: -4%;
+}
+ 
+/* FIXME: Make the floating emote panel look better on mobile. */
+.ep__floating {
+    position: fixed;
+    z-index: 1020;
+    height: 28% !important;
+    overflow: scroll;
+    text-align: center;
+    width: 380px;
+    margin: 10px 20px 0 30px;
+    opacity: 1;
+    /* From https://css.glass */
+    background: rgba(0, 0, 0, 0.27);
+    border-radius: 16px;
+    border: #bbbbbb;
+    border-style: solid;
+    border-width: thin;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.8px);
+    -webkit-backdrop-filter: blur(3.8px);
+}
+ 
+.ep__fixed {
+    z-index: 1020;
+    min-height: 23% !important;
+    height: 23% !important;
+    width: 100%;
+    margin: 0;
+    overflow: scroll;
+    text-align: center;
+    border: var(--primarycolor);
+    border-style: none none solid none;
+    border-width: thick;
+    background-color: var(--secondarycolor);
+}
+ 
+#emotespanel img {
+    margin: 5px;
+    max-height: 50px;
+    cursor: pointer
+}
+ 
+#emotesbtnwrap {
+    text-align: center;
+    margin: 5px
+}
+ 
+#emotespanel .alert {
+    text-align: left;
+    margin: 5px -10px
+}
+ 
+#cs-csspreview {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 10px
+}
+ 
+/* Custom scrolling banner */
+.banner-slideshow {
+    height: 215px;
+    max-width: 100%;
+    margin: 0 auto;
+    border-style: solid;
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+    border-color: #916907
+}
+ 
+.banner-slideshow > div {
+    height: 400px;
+    width: 5066px;
+    background: var(--bannerimg);
+    background-size: 50%;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transform: translate3d(0, 0, 0)
+}
+ 
+.banner-slideshow .mover-1 {
+    animation: moveSlideshow 20s linear infinite
+}
+ 
+@keyframes moveSlideshow {
+    100% {
+        transform: translateX(-50%)
+    }
+}
+ 
+.autocomplete-items {
+    position: absolute;
+    max-height: 150px;
+    overflow: scroll;
+    border: 1px solid #e3d6eb;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    /* From https://css.glass */
+    background: rgba(0, 0, 0, 0.67);
+    border-style: none;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.8px);
+    -webkit-backdrop-filter: blur(7.8px);
+}
+ 
+.autocomplete-items div {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    cursor: pointer;
+    background: transparent; 
+    border: none;
+}
+ 
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+    background-color: #4a4a4a; 
+}
+ 
+#autocomplete-image {
+    margin-left: auto;
+    display: block;
+    height: 42px;
+}
+ 
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+    background-color: var(--tertiarycolor) !important; 
+    color: #ffffff; 
+}
+ 
+/* Reply styling */
+.reply {
+    position: relative;
+    background-color: var(--tertiarycolor);
+    padding: 0.5rem;
+    padding-top: 0;
+    margin-bottom: 0.4rem;
+    border: gray 1px solid;
+    border-radius: 1rem 1rem 1rem 0;
+    overflow: hidden;
+    max-height: 10rem;
+    width: 98%;
+    transition-property: background-color;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: 75ms;
+    cursor: pointer;
+}
+ 
+.reply:hover {
+    background-color: var(--secondarycolor);
+}
+ 
+.reply:hover::after {
+    background-image: unset;
+}
+ 
+.reply::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1rem;
+    background-image: linear-gradient(to bottom, transparent, var(--tertiarycolor));
+}
+ 
+.reply-header {
+    font-size: small;
+}
+ 
+.reply-msg {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: small;
+    color: white;
+}
+ 
+.reply-button {
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2.5rem;
+    width: 2.5rem;
+    background: transparent;
+    padding: 0;
+    border: none;
+    border-radius: 10000px;
+    transition-property: background-color;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: 75ms;
+}
+ 
+.reply-button:hover {
+    background-color: var(--tertiarycolor);
+}
+ 
+#messagebuffer > div:hover .reply-button {
+    visibility: visible;
+}
+ 
+#messagebuffer > div:not(:has(> .server-whisper)):hover .timestamp {
+    visibility: hidden;
+}
+ 
+.reply-icon {
+    display: block;
+    height: 2.5rem;
+    width: 2.5rem;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCI+PHBhdGggZD0iTTIwIDE4di04TDYgMjRsMTQgMTR2LTguMmMxMCAwIDE3IDMuMiAyMiAxMC4yLTItMTAtOC0yMC0yMi0yMnoiIGZpbGw9IiNjMmMyYzIiLz48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDQ4djQ4SDB6Ii8+PC9zdmc+);
+    background-size: 2.5rem 2.5rem;
+    pointer-events: none;
+}
+ 
+CSS relevante:
+/* Estilo do texto */
+.redtext {
+  color: #D42617;
+}
+ 
+.greentext {
+  color: #21f234;
+}
+ 
+.pinktext {
+  color: #ff66a1;
+}
+ 
+.boldtext {
+  font-weight: bold;
+}
+ 
+/* Bloco de cÃƒÂ³digo */
+.codeblock {
+  font-family: monospace;
+  background-color: #000000; /* Fundo escuro acinzentado */
+  color: hsl(342, 100%, 90%); /* Texto claro para contraste */
+  padding: 1px 3px; /* EspaÃƒÂ§amento maior para legibilidade */
+  border-radius: 4px;
+  border: 1px solid #444; /* Borda sutil para destaque */
+}
+ 
+.rainbowtext {
+    background: linear-gradient(to right,
+      #ff0000,
+      #ffa600,
+      #fff500,
+      #06ff00,
+      #00c9ff,
+      #2300ff,
+      #ff00fa,
+      #ff0000);
+    background-size: 200% auto;
+    color: #000;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 11pt;
+    //font-weight: bold;
+    animation: heading 1s linear infinite;
+}
+ 
+@keyframes heading {
+  to {
+    background-position: 200% center;
+  }
+ 
+/* === Chat Message Layout estilo IRC === */
+[class^="chat-msg-"] {
+    font-size: 10px !important; /* Ou outro tamanho desejado */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 5px;
+}
+ 
+/* Timestamp antes de tudo */
+[class^="chat-msg-"] .timestamp {
+    order: -2;
+    color: #aaa;
+    min-width: 60px;
+    flex-shrink: 0;
+}
+ 
+/* BotÃƒÂ£o de resposta logo depois do timestamp */
+[class^="chat-msg-"] .reply-button {
+    order: -1;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+ 
+[class^="chat-msg-"] strong.username {
+    font-size: 10px !important; /* Ou outro tamanho desejado */
+    font-weight: bold;
+    color: #ff6600 !important;
+    margin-right: 5px;
+    display: inline;
+}
+ 
+/* Mensagem de texto */
+[class^="chat-msg-"] span:last-child {
+    font-size: 10px !important; /* Ou outro tamanho desejado */
+    white-space: pre-wrap;
+    word-break: break-word;
+    flex: 1 1 auto;
+}
+ 
+/* === Cores personalizadas para nicks === */
+strong.username.user-owner {
+    color: ##704995 !important; /* Dourado para donos */
+    font-size: 14px !important; /* Ou outro tamanho desejado */
+}
+ 
+strong.username.user-admin {
+    color: #FF5555 !important; /* Vermelho para admins */
+}
+ 
+strong.username.user {
+    color: #704995 !important; /* Azul para usuÃƒÂ¡rios comuns */
+    font-size: 10px !important; /* Ou outro tamanho desejado */
+}
+ 
+strong.username.user-mod {
+    color: #704995f !important; /* Verde para moderadores */
+}
+}

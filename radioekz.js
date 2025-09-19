@@ -1,3 +1,12 @@
+function waitForInitPMObserver() {
+    if (typeof initPMObserver === 'function') {
+        initPMObserver(); // agora a função é chamada somente quando existir
+    } else {
+        setTimeout(waitForInitPMObserver, 100); // espera 100ms e tenta de novo
+    }
+}
+waitForInitPMObserver();
+
 (() => {
   // ---- CONFIG ----
   const reacts = {
@@ -1060,4 +1069,5 @@ function md5(inputString) {
     return rh(a)+rh(b)+rh(c)+rh(d);
 
 }
+
 

@@ -1,11 +1,23 @@
-function waitForInitPMObserver() {
-    if (typeof initPMObserver === 'function') {
-        initPMObserver(); // agora a função é chamada somente quando existir
-    } else {
-        setTimeout(waitForInitPMObserver, 100); // espera 100ms e tenta de novo
+(function() {
+    function waitForInitPMObserver() {
+        if (typeof initPMObserver === 'function') {
+            initPMObserver(); // chama só quando existir
+        } else {
+            setTimeout(waitForInitPMObserver, 100);
+        }
     }
-}
-waitForInitPMObserver();
+
+    // espera DOM e jQuery do CyTube
+    function waitForjQueryReady(callback) {
+        if (typeof jQuery !== 'undefined' && document.readyState !== 'loading') {
+            jQuery(function() { callback(); });
+        } else {
+            setTimeout(() => waitForjQueryReady(callback), 100);
+        }
+    }
+
+    waitForjQueryReady(() => {
+        waitForInitPMObserver();
 
 (() => {
   // ---- CONFIG ----
@@ -1069,5 +1081,9 @@ function md5(inputString) {
     return rh(a)+rh(b)+rh(c)+rh(d);
 
 }
+
+            });
+})();
+
 
 

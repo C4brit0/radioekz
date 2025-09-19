@@ -1,59 +1,3 @@
-// ======================================================
-// Radioekz.js final - Wrapper para CyTube
-// ======================================================
-
-(function() {
-    console.log("radioekz: loader start");
-
-    // Função para esperar por qualquer condição
-    function waitFor(conditionFn, callback, interval = 100, timeout = 20000) {
-        const start = Date.now();
-        (function poll() {
-            try {
-                if (conditionFn()) return callback();
-            } catch(e) {}
-            if (Date.now() - start > timeout) {
-                console.warn("radioekz: waitFor timeout");
-                return;
-            }
-            setTimeout(poll, interval);
-        })();
-    }
-
-    // Espera jQuery e DOM
-    waitFor(function() {
-        return (typeof window.jQuery !== 'undefined' && document.readyState !== 'loading');
-    }, function() {
-        jQuery(function($) {
-            console.log("radioekz: jQuery & DOM prontos");
-
-            // Badge visual opcional
-            try {
-                if (!document.getElementById('radioekz-badge')) {
-                    const b = document.createElement('div');
-                    b.id = 'radioekz-badge';
-                    b.textContent = 'radioekz ativo';
-                    b.style.position = 'fixed';
-                    b.style.right = '8px';
-                    b.style.bottom = '8px';
-                    b.style.zIndex = 99999;
-                    b.style.padding = '6px 10px';
-                    b.style.borderRadius = '6px';
-                    b.style.background = 'rgba(0,0,0,0.6)';
-                    b.style.color = 'white';
-                    b.style.fontSize = '12px';
-                    document.body.appendChild(b);
-                }
-            } catch(e) {
-                console.warn("radioekz: erro ao criar badge", e);
-            }
-
-            // Espera por initPMObserver do CyTube
-            waitFor(function() { return typeof initPMObserver === 'function'; }, function() {
-                initPMObserver();
-                console.log("radioekz: initPMObserver executado");
-            });
-            
 (() => {
   // ---- CONFIG ----
   const reacts = {
@@ -69,7 +13,7 @@
     "nossa": "https://files.catbox.moe/6pdrbm.mp3",
     "numtendi": "https://files.catbox.moe/xd75la.mp3",
     "nao": "https://files.catbox.moe/kvsif2.mp3",
-    "buzina": "https://files.catbox.moe/duib7w.mp3",
+    "nojo": "https://files.catbox.moe/duib7w.mp3",
     "dom": "https://files.catbox.moe/hk53s0.mp3",
     "toc": "https://files.catbox.moe/baltd2.mp3",
     "badumts": "https://files.catbox.moe/arvpuf.mp3",
@@ -1114,11 +1058,4 @@ function md5(inputString) {
         b=ii(b,c,d,a,x[i+ 9],21, -343485551);a=ad(a,olda);b=ad(b,oldb);c=ad(c,oldc);d=ad(d,oldd);
     }
     return rh(a)+rh(b)+rh(c)+rh(d);
-
 }
-
-        });
-    });
-})();
-
-

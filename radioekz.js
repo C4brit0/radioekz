@@ -1,24 +1,59 @@
+// ======================================================
+// Radioekz.js final - Wrapper para CyTube
+// ======================================================
+
 (function() {
-    function waitForInitPMObserver() {
-        if (typeof initPMObserver === 'function') {
-            initPMObserver(); // chama só quando existir
-        } else {
-            setTimeout(waitForInitPMObserver, 100);
-        }
+    console.log("radioekz: loader start");
+
+    // Função para esperar por qualquer condição
+    function waitFor(conditionFn, callback, interval = 100, timeout = 20000) {
+        const start = Date.now();
+        (function poll() {
+            try {
+                if (conditionFn()) return callback();
+            } catch(e) {}
+            if (Date.now() - start > timeout) {
+                console.warn("radioekz: waitFor timeout");
+                return;
+            }
+            setTimeout(poll, interval);
+        })();
     }
 
-    // espera DOM e jQuery do CyTube
-    function waitForjQueryReady(callback) {
-        if (typeof jQuery !== 'undefined' && document.readyState !== 'loading') {
-            jQuery(function() { callback(); });
-        } else {
-            setTimeout(() => waitForjQueryReady(callback), 100);
-        }
-    }
+    // Espera jQuery e DOM
+    waitFor(function() {
+        return (typeof window.jQuery !== 'undefined' && document.readyState !== 'loading');
+    }, function() {
+        jQuery(function($) {
+            console.log("radioekz: jQuery & DOM prontos");
 
-    waitForjQueryReady(() => {
-        waitForInitPMObserver();
+            // Badge visual opcional
+            try {
+                if (!document.getElementById('radioekz-badge')) {
+                    const b = document.createElement('div');
+                    b.id = 'radioekz-badge';
+                    b.textContent = 'radioekz ativo';
+                    b.style.position = 'fixed';
+                    b.style.right = '8px';
+                    b.style.bottom = '8px';
+                    b.style.zIndex = 99999;
+                    b.style.padding = '6px 10px';
+                    b.style.borderRadius = '6px';
+                    b.style.background = 'rgba(0,0,0,0.6)';
+                    b.style.color = 'white';
+                    b.style.fontSize = '12px';
+                    document.body.appendChild(b);
+                }
+            } catch(e) {
+                console.warn("radioekz: erro ao criar badge", e);
+            }
 
+            // Espera por initPMObserver do CyTube
+            waitFor(function() { return typeof initPMObserver === 'function'; }, function() {
+                initPMObserver();
+                console.log("radioekz: initPMObserver executado");
+            });
+            
 (() => {
   // ---- CONFIG ----
   const reacts = {
@@ -1082,8 +1117,8 @@ function md5(inputString) {
 
 }
 
-            });
+        });
+    });
 })();
-
 
 

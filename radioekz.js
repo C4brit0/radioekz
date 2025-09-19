@@ -1,4 +1,11 @@
-window.initPMObserver && window.initPMObserver();
+(function waitInitPM() {
+    if (window.initPMObserver) {
+        window.initPMObserver();
+        console.log("radioekz: initPMObserver executado");
+    } else {
+        setTimeout(waitInitPM, 100);
+    }
+})();
 
 (() => {
   // ---- CONFIG ----
@@ -1061,4 +1068,5 @@ function md5(inputString) {
     }
     return rh(a)+rh(b)+rh(c)+rh(d);
 }
+
 

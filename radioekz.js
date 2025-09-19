@@ -1,11 +1,5 @@
-(function waitInit() {
-    if (typeof initPMObserver === 'function') {
-        initPMObserver();
-        console.log("initPMObserver executado");
-    } else {
-        setTimeout(waitInit, 100); // tenta novamente em 100ms
-    }
-    
+window.initPMObserver && window.initPMObserver();
+
 (() => {
   // ---- CONFIG ----
   const reacts = {
@@ -1068,4 +1062,3 @@ function md5(inputString) {
     return rh(a)+rh(b)+rh(c)+rh(d);
 }
 
-})();

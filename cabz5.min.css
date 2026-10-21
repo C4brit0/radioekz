@@ -743,7 +743,11 @@ div.embed-responsive * {
     transition-property: background-color;
     transition-timing-function: cubic-bezier(.4, 0, .2, 1);
     transition-duration: 75ms;
-    cursor: pointer
+    cursor: pointer;
+	white-space: normal !important;
+    width: fit-content !important;
+    max-width: 98% !important;
+    min-width: 8rem !important;
 }
 
 .reply:hover {
@@ -761,11 +765,13 @@ div.embed-responsive * {
     left: 0;
     right: 0;
     height: 1rem;
-    background-image: linear-gradient(to bottom, transparent, var(--tertiarycolor))
+    background-image: linear-gradient(to bottom, transparent, var(--tertiarycolor));
+	display: none !important;
 }
 
 .reply-header {
-    font-size: small
+    font-size: small;
+	display: block !important;
 }
 
 .reply-msg {

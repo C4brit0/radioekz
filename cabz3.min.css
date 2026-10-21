@@ -731,55 +731,53 @@ div.embed-responsive * {
 
 .reply {
     position: relative;
-    display: block;
-    width: fit-content;
-    max-width: 100%;
-    min-width: 8rem;
-    height: auto;
-    min-height: 0;
-    max-height: 6rem;
-    box-sizing: border-box;
-    margin: 0.2rem 0 0.4rem 0;
-    padding: 0.3rem 0.7rem;
-    text-align: left;
-    line-height: 1.25;
     background-color: var(--tertiarycolor);
+    padding: 0.5rem;
+    padding-top: 0;
+    margin-bottom: 0.4rem;
     border: gray 1px solid;
-    border-radius: 0.8rem 0.8rem 0.8rem 0;
+    border-radius: 1rem 1rem 1rem 0;
     overflow: hidden;
-    cursor: pointer;
-    transition: background-color 75ms cubic-bezier(.4, 0, .2, 1);
+    max-height: 10rem;
+    width: 98%;
+    transition-property: background-color;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    transition-duration: 75ms;
+    cursor: pointer
 }
 
 .reply:hover {
-    background-color: var(--secondarycolor);
+    background-color: var(--secondarycolor)
+}
+
+.reply:hover::after {
+    background-image: unset
 }
 
 .reply::after {
-    display: none;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1rem;
+    background-image: linear-gradient(to bottom, transparent, var(--tertiarycolor))
 }
 
 .reply-header {
-    display: block;
-    margin: 0;
-    padding: 0;
-    text-align: left;
-    font-size: small;
-    opacity: .75;
+    font-size: small
 }
 
 .reply-msg {
-    display: -webkit-box;
-    margin: 0;
-    padding: 0;
-    text-align: left;
     overflow: hidden;
+    display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     -webkit-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     font-size: small;
-    color: #fff;
+    color: #fff
 }
 
 /* Botão de reply */

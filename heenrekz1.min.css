@@ -409,7 +409,7 @@ div.embed-responsive * {
 
 /* Elementos das mensagens */
 .label {
-    display: flex
+    display: flex;
 	flex-direction: row; /* Garante que os elementos fiquem em linha */
     align-items: center; /* Alinha verticalmente */
 }
@@ -743,7 +743,11 @@ div.embed-responsive * {
     transition-property: background-color;
     transition-timing-function: cubic-bezier(.4, 0, .2, 1);
     transition-duration: 75ms;
-    cursor: pointer
+    cursor: pointer;
+    white-space: normal !important;
+    width: fit-content !important;
+    max-width: 98% !important;
+    min-width: 8rem !important;
 }
 
 .reply:hover {
@@ -762,10 +766,12 @@ div.embed-responsive * {
     right: 0;
     height: 1rem;
     background-image: linear-gradient(to bottom, transparent, var(--tertiarycolor))
+    display: none !important;
 }
 
 .reply-header {
-    font-size: small
+    font-size: small;
+    display: block !important;
 }
 
 .reply-msg {

@@ -377,7 +377,9 @@ div.embed-responsive * {
     flex-grow: 5;
     padding-left: 10px;
     padding-right: 10px;
-    background: #140e10 url("https://cdn.jsdelivr.net/gh/C4brit0/penny9@main/static.png") repeat center center;
+    background:
+        url("https://cdn.jsdelivr.net/gh/C4brit0/radioekz@main/teias.png") no-repeat right top / min(55%, 280px) auto,
+        #140e10 url("https://cdn.jsdelivr.net/gh/C4brit0/penny9@main/static.png") repeat center center;
 }
 
 #messagebuffer>div {

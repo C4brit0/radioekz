@@ -119,7 +119,7 @@ div#chanjs-allow-prompt {
 
 .navbar-brand {
     text-indent: -9999px; /* empurra o texto pra fora da tela */
-    background-image: url("https://raw.githubusercontent.com/C4brit0/penny9/refs/heads/main/hallow.png"); /* substitua pela URL da sua imagem */
+    background-image: url("https://raw.githubusercontent.com/C4brit0/radioekz/refs/heads/main/logoekz.png"); /* substitua pela URL da sua imagem */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -378,7 +378,7 @@ div.embed-responsive * {
     padding-left: 10px;
     padding-right: 10px;
     background:
-        url("https://cdn.jsdelivr.net/gh/C4brit0/radioekz@main/teias.png") no-repeat right top / min(55%, 280px) auto,
+        url("") no-repeat right top / min(55%, 280px) auto,
         #140e10 url("https://cdn.jsdelivr.net/gh/C4brit0/penny9@main/static.png") repeat center center;
 }
 

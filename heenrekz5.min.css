@@ -1067,6 +1067,127 @@ textarea.form-control {
   }
 }
 
+/* =============================================
+   EFEITOS DE TEXTO (filtros do chat)
+   ============================================= */
+
+.fx-neon {
+    color: #f4d9ff;
+    text-shadow: 0 0 4px #fff, 0 0 10px #BE19FF, 0 0 20px #BE19FF, 0 0 34px #BE19FF;
+}
+
+.fx-tremer {
+    display: inline-block;
+    animation: fx-tremer .12s linear infinite;
+}
+
+@keyframes fx-tremer {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(-1px, 1px); }
+    50%  { transform: translate(1px, -1px); }
+    75%  { transform: translate(-1px, -1px); }
+    100% { transform: translate(1px, 1px); }
+}
+
+.fx-onda {
+    display: inline-block;
+    animation: fx-onda 1.4s ease-in-out infinite;
+}
+
+@keyframes fx-onda {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-4px); }
+}
+
+.fx-glitch {
+    display: inline-block;
+    text-shadow: 2px 0 #00fff9, -2px 0 #ff00c8;
+    animation: fx-glitch 1.2s steps(2, end) infinite;
+}
+
+@keyframes fx-glitch {
+    0%, 90%, 100% { transform: translate(0); text-shadow: 2px 0 #00fff9, -2px 0 #ff00c8; }
+    92% { transform: translate(-2px, 1px); text-shadow: -3px 0 #00fff9, 3px 0 #ff00c8; }
+    95% { transform: translate(2px, -1px); text-shadow: 3px 0 #00fff9, -3px 0 #ff00c8; }
+}
+
+/* degradês animados (reusam o @keyframes heading que ja existe no tema) */
+.fx-fogo,
+.fx-gelo,
+.fx-ouro {
+    background-size: 200% auto;
+    color: #000;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: heading 1.2s linear infinite;
+}
+
+.fx-fogo { background-image: linear-gradient(to right, #ff2d00, #ff8a00, #ffd000, #ff8a00, #ff2d00); }
+.fx-gelo { background-image: linear-gradient(to right, #00c6ff, #e0f7ff, #6fd3ff, #e0f7ff, #00c6ff); }
+.fx-ouro { background-image: linear-gradient(to right, #b8860b, #ffd700, #fff4b0, #ffd700, #b8860b); }
+
+.fx-espelho {
+    display: inline-block;
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+.fx-vapor {
+    letter-spacing: .35em;
+    color: #ff71ce;
+    text-shadow: 2px 2px #01cdfe, -1px -1px #b967ff;
+}
+
+.fx-sussurro {
+    font-size: 80%;
+    opacity: .55;
+    font-style: italic;
+}
+
+.fx-destaque {
+    background: #fff176;
+    color: #000;
+    padding: 0 3px;
+    border-radius: 3px;
+}
+
+.fx-azul    { color: #4aa8ff; }
+.fx-amarelo { color: #ffe14a; }
+.fx-laranja { color: #ff9a3d; }
+.fx-ciano   { color: #2ef2ff; }
+
+/* caixa alta automatica */
+.fx-grito {
+    display: inline-block;
+    font-size: 125%;
+    font-weight: bold;
+    color: #ff3b3b;
+    text-shadow: 0 0 6px rgba(255, 59, 59, .6);
+    animation: fx-tremer .1s linear infinite;
+}
+
+/* @nick */
+.fx-mencao {
+    background: rgba(190, 25, 255, .25);
+    color: #f4d9ff;
+    font-weight: bold;
+    padding: 0 8px;
+    border-radius: 999px;
+}
+
+/* dentro do quadro de reply os efeitos ficam parados */
+.reply-msg [class^="fx-"] {
+    animation: none !important;
+}
+
+/* para quem desativa animacoes no aparelho */
+@media (prefers-reduced-motion: reduce) {
+    [class^="fx-"] {
+        animation: none !important;
+    }
+}
+
 
 /*# sourceMappingURL=/sm/a7293c5ef1f1ba15e2aac2b60f73aaaef4a2b4ec290e678a2582169bb7533000.map */
 

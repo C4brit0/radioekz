@@ -1188,6 +1188,98 @@ textarea.form-control {
     }
 }
 
+/* =============================================
+   MENSAGENS ESTILO DISCORD (avatar + nick + hora)
+   ============================================= */
 
+:root {
+    --dc-avatar: 40px;   /* tamanho da foto (tente 44px ou 48px para maior) */
+    --dc-radius: 0;      /* 0 = quadrada | 4px = cantos levemente arredondados | 50% = redonda */
+    --dc-gap: 12px;      /* espaco entre a foto e o texto */
+}
+
+/* cada mensagem de usuario vira uma pequena grade: foto | nick | hora */
+#messagebuffer > div[class*="chat-msg-"] {
+    display: grid;
+    grid-template-columns: calc(var(--dc-avatar) + var(--dc-gap)) max-content minmax(0, 1fr);
+    align-items: baseline;
+}
+
+/* primeira mensagem do grupo (a que mostra o nick): altura minima igual a da foto,
+   para a foto nao invadir a mensagem de baixo (sem espaco extra entre usuarios) */
+#messagebuffer > div[class*="chat-msg-"]:has(.username) {
+    min-height: var(--dc-avatar);
+}
+
+/* a foto */
+#messagebuffer > div[class*="chat-msg-"] > .dc-avatar {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    align-self: start;
+    width: var(--dc-avatar);
+    height: var(--dc-avatar);
+    border-radius: var(--dc-radius);
+    background-color: #2b2d31;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* nick */
+#messagebuffer > div[class*="chat-msg-"] > .username,
+#messagebuffer > div[class*="chat-msg-"] > :has(> .username) {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+/* hora do cytu.be, ao lado do nick */
+#messagebuffer > div[class*="chat-msg-"] > .timestamp {
+    grid-column: 3;
+    grid-row: 1;
+    min-width: 0;
+    margin-left: 4px;
+    font-size: 11px;
+    color: #8e8e99;
+}
+
+/* o tema antigo escondia a hora ao passar o mouse; aqui ela fica sempre visivel */
+#messagebuffer > div[class*="chat-msg-"]:hover > .timestamp {
+    visibility: visible !important;
+}
+
+/* quadro de reply e texto da mensagem, abaixo do nick */
+#messagebuffer > div[class*="chat-msg-"] > .reply {
+    grid-column: 2 / -1;
+    grid-row: 2;
+    justify-self: start;
+    margin: 2px 0 4px 0;
+}
+
+#messagebuffer > div[class*="chat-msg-"] > span:last-child {
+    grid-column: 2 / -1;
+    grid-row: 3;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+/* mensagens seguidas da mesma pessoa: sem foto, texto alinhado, hora pequena na coluna da foto */
+#messagebuffer > div[class*="chat-msg-"]:not(:has(.username)) > .timestamp {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: end;
+    margin-left: 0;
+    padding-right: 6px;
+    font-size: 9px;
+    white-space: nowrap;
+    color: #6f6f7a;
+}
+
+#messagebuffer > div[class*="chat-msg-"]:not(:has(.username)) > .reply {
+    grid-row: 1;
+}
+
+#messagebuffer > div[class*="chat-msg-"]:not(:has(.username)) > span:last-child {
+    grid-row: 2;
+}
 /*# sourceMappingURL=/sm/a7293c5ef1f1ba15e2aac2b60f73aaaef4a2b4ec290e678a2582169bb7533000.map */
 
